@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+    $color-primary: red;
+    $color-secondary: blue;
+    $color-tertiary: green;
+    $font-size: 15px;
+    $spacer: 1rem;
+section{
+    display: flex;
+}
+@mixin article-card($color,$border-color,$font-size:24px){
+    color:$color;
+    border: solid 1px $border-color;
+    font-size:$font-size;
+}
+div{
+    text-align: center;
+    border: solid 1px red;
+    height:250px;
+    margin:10px;
+    h1{
+        color:$color-tertiary;
+        text-decoration: underline;
+    }
+}
+section{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+article{
+       &:nth-child(odd){
+        @include article-card($color-secondary, $color-tertiary,$font-size);
+       }
+        &:nth-child(even){
+            @include article-card($color-primary,$color-tertiary,$font-size);
+        }
+    }
+
+    section:last-child article:last-child{
+        @include article-card($color-tertiary,$color-secondary,$font-size);
+    }
+
+
+section:last-child article:last-child{
+    margin-top:30px;
+    height:60px;
+    width:100%;
+    p{
+        margin-top:10px;
+    }
+}
